@@ -1,6 +1,10 @@
+import numpy as np
+from sklearn.datasets import make_blobs
 from matplotlib.colors import ListedColormap, colorConverter, LinearSegmentedColormap
 
 
+
+#-------------------------------------------
 cm_cycle = ListedColormap(['#0000aa', '#ff5050', '#50ff50', '#9040a0', '#fff000'])
 cm3 = ListedColormap(['#0000aa', '#ff2020', '#50ff50'])
 cm2 = ListedColormap(['#0000aa', '#ff2020'])
@@ -20,9 +24,7 @@ cdict = {'red': [(0.0, 0.0, cm2(0)[0]),
 
 ReBl = LinearSegmentedColormap("ReBl", cdict)
 
-
-import numpy as np
-from sklearn.datasets import make_blobs
+#-------------------------------------------
 
 # Define a function to create a wave dataset
 def make_wave(n_samples=1000):
@@ -31,7 +33,8 @@ def make_wave(n_samples=1000):
     y_no_noise = (np.sin(4 * x) + x) # Generate y values based on a sine wave with some noise added
     y = (y_no_noise + rnd.normal(size=len(x))) / 2 # Add normally distributed noise to the y values
     return x.reshape(-1, 1), y
-
+  
+#-------------------------------------------
 
 def discrete_scatter(x1, x2, y=None, markers=None, s=10, ax=None,
                      labels=None, padding=.2, alpha=1, c=None, markeredgewidth=None):
@@ -111,6 +114,9 @@ def discrete_scatter(x1, x2, y=None, markers=None, s=10, ax=None,
 
     return lines
 
+#-------------------------------------------
+
+
 def plot_2d_separator(classifier, X, fill=False, ax=None, eps=None, alpha=1,
                       cm=cm2, linewidth=None, threshold=None,
                       linestyle="solid"):
@@ -158,9 +164,7 @@ def plot_2d_separator(classifier, X, fill=False, ax=None, eps=None, alpha=1,
     ax.set_xticks(())
     ax.set_yticks(())
 
-
-import numpy as np
-from sklearn.datasets import make_blobs
+#-------------------------------------------
 
 # Define a function to create a custom dataset called "forge"
 def make_forge(n_samples):
@@ -171,10 +175,15 @@ def make_forge(n_samples):
     mask[np.array([0, 1, 5, 26])] = 0 # Set four specific samples to False in the mask
     X, y = X[mask], y[mask] # Apply the mask to the dataset
     return X, y
+
   
+#-------------------------------------------
+
+
 def plot_2d_classification(classifier, X, fill=False, ax=None, eps=None,
                            alpha=1, cm=cm3):
     # multiclass
+    import matplotlib.pyplot as plt
     if eps is None:
         eps = X.std() / 2.
 
