@@ -2,7 +2,8 @@ import numpy as np
 from sklearn.datasets import make_blobs
 from matplotlib.colors import ListedColormap, colorConverter, LinearSegmentedColormap
 from matplotlib import pyplot as plt
-
+from scipy import ndimage
+import matplotlib as mpl
 
 
 #-------------------------------------------
@@ -59,10 +60,7 @@ def discrete_scatter(x1, x2, y=None, markers=None, s=10, ax=None,
     alpha : float
         Alpha value for all points.
     """
-    import numpy as np
-    import matplotlib as mpl
-    import matplotlib.pyplot as plt
-    from matplotlib.colors import ListedColormap, colorConverter, LinearSegmentedColormap
+
     if ax is None:
         ax = plt.gca()
 
@@ -122,8 +120,6 @@ def plot_2d_separator(classifier, X, fill=False, ax=None, eps=None, alpha=1,
                       cm=cm2, linewidth=None, threshold=None,
                       linestyle="solid"):
     #print('hola')
-    import numpy as np
-    import matplotlib.pyplot as plt
     # binary?
     if eps is None:
         eps = X.std() / 2.
@@ -184,7 +180,7 @@ def make_forge(n_samples):
 def plot_2d_classification(classifier, X, fill=False, ax=None, eps=None,
                            alpha=1, cm=cm3):
     # multiclass
-    import matplotlib.pyplot as plt
+   
     if eps is None:
         eps = X.std() / 2.
 
@@ -210,7 +206,7 @@ def plot_2d_classification(classifier, X, fill=False, ax=None, eps=None,
     
 #-------------------------------------------    
 def plot_tree_partition(X, y, tree, ax=None):
-    from matplotlib import pyplot as plt
+
     if ax is None:
         ax = plt.gca()
     eps = X.std() / 2.
