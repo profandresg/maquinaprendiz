@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.datasets import make_blobs
 from matplotlib.colors import ListedColormap, colorConverter, LinearSegmentedColormap
+from matplotlib import pyplot as plt
 
 
 
@@ -209,6 +210,7 @@ def plot_2d_classification(classifier, X, fill=False, ax=None, eps=None,
     
 #-------------------------------------------    
 def plot_tree_partition(X, y, tree, ax=None):
+    from matplotlib import pyplot as plt
     if ax is None:
         ax = plt.gca()
     eps = X.std() / 2.
