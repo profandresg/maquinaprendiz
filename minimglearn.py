@@ -1,9 +1,17 @@
 import numpy as np
+
 from sklearn.datasets import make_blobs
+from sklearn.datasets import make_moons
+from sklearn.tree import export_graphviz
+from sklearn.tree import DecisionTreeClassifier
+
+import matplotlib as mpl
 from matplotlib.colors import ListedColormap, colorConverter, LinearSegmentedColormap
 from matplotlib import pyplot as plt
+
+from io import StringIO
+from imageio import imread
 from scipy import ndimage
-import matplotlib as mpl
 
 
 #-------------------------------------------
