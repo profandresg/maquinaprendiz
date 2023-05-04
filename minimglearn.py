@@ -248,3 +248,31 @@ def plot_tree_partition(X, y, tree, ax=None):
     ax.set_xticks(())
     ax.set_yticks(())
     return ax
+
+  #-------------------------------------------
+  
+  def heatmap(values, xlabel, ylabel, xticklabels, yticklabels, cmap=None,
+            vmin=None, vmax=None, ax=None, fmt="%0.2f"):
+    from matplotlib import pyplot as plt
+    if ax is None:
+        ax = plt.gca()
+    # plot the mean cross-validation scores
+    img = ax.pcolor(values, cmap=cmap, vmin=vmin, vmax=vmax)
+    img.update_scalarmappable()
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.set_xticks(np.arange(len(xticklabels)) + .5)
+    ax.set_yticks(np.arange(len(yticklabels)) + .5)
+    ax.set_xticklabels(xticklabels)
+    ax.set_yticklabels(yticklabels)
+    ax.set_aspect(1)
+
+    for p, color, value in zip(img.get_paths(), img.get_facecolors(),
+                               img.get_array()):
+        x, y = p.vertices[:-2, :].mean(0)
+        if np.mean(color[:3]) > 0.5:
+            c = 'k'
+        else:
+            c = 'w'
+        ax.text(x, y, fmt % value, color=c, ha="center", va="center")
+    return img
