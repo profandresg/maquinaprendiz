@@ -276,3 +276,15 @@ def heatmap(values, xlabel, ylabel, xticklabels, yticklabels, cmap=None,
             c = 'w'
         ax.text(x, y, fmt % value, color=c, ha="center", va="center")
     return img
+
+#-------------------------------------------
+
+def plot_kmeans_boundaries():
+    from sklearn.cluster import KMeans
+    X, y = make_blobs(random_state=1)
+    init = X[:3, :]
+    km = KMeans(n_clusters=3, init=init, max_iter=2, n_init=1).fit(X)
+    discrete_scatter(X[:, 0], X[:, 1], km.labels_, markers=['o'])
+    discrete_scatter(km.cluster_centers_[:, 0], km.cluster_centers_[:, 1],
+                     [0, 1, 2], markers=['^'], markeredgewidth=2)
+    plot_2d_classification(km, X, cm=cm3, alpha=.4)
