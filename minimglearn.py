@@ -294,6 +294,7 @@ def plot_kmeans_boundaries():
 #-------------------------------------------
     
 def plot_dbscan():
+    from sklearn.cluster import DBSCAN
     X, y = make_blobs(random_state=0, n_samples=12)
 
     dbscan = DBSCAN()
